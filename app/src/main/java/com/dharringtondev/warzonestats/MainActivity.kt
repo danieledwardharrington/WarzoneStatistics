@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         GlobalScope.launch(Dispatchers.IO) {
-            val response = WarzoneService.create().getWarzoneStats("Jet_tct", "psn")
+            val response = WarzoneService.create().getWeeklyStats("Jet_tct", "psn")
             if (response.isSuccessful) {
                 Log.d(TAG, "CODE: ${response.code()}")
                 Log.d(TAG, response.raw().toString())

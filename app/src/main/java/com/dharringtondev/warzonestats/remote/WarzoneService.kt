@@ -3,6 +3,7 @@ package com.dharringtondev.warzonestats.remote
 import com.dharringtondev.warzonestats.BuildConfig
 import com.dharringtondev.warzonestats.remote.responses.MatchResponse
 import com.dharringtondev.warzonestats.remote.responses.StatsResponse
+import com.dharringtondev.warzonestats.remote.responses.WeeklyStatsResponse
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
@@ -21,6 +22,9 @@ interface WarzoneService {
 
     @GET("warzone/{username}/{platform}")
     suspend fun getWarzoneStats(@Path("username") username: String, @Path("platform") platform: String): Response<StatsResponse>
+
+    @GET("weekly-stats/{username}/{platform}")
+    suspend fun getWeeklyStats(@Path("username") username: String, @Path("platform") platform: String): Response<WeeklyStatsResponse>
 
     companion object {
         fun create(): WarzoneService {
