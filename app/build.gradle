@@ -22,7 +22,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "RAPID_API_KEY", '"ba9dcfba74msh1caaac92b37e9b9p10b2eajsn0452ea369f19"'
+        buildConfigField "String", "RAPID_API_KEY", '"e2398d366bmshb29ad29028e93d4p199760jsneaeb523a1c52"'
         buildConfigField "String", "RAPID_API_HOST", '"call-of-duty-modern-warfare.p.rapidapi.com"'
         buildConfigField "String", "COD_API_BASE_URL", '"https://call-of-duty-modern-warfare.p.rapidapi.com/"'
     }

@@ -17,12 +17,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         GlobalScope.launch(Dispatchers.IO) {
-            val response = WarzoneService.create().getWarzoneStats("Asudo_", "psn")
+            val response = WarzoneService.create().getWarzoneStats("Jet_tct", "psn")
             if (response.isSuccessful) {
+                Log.d(TAG, "CODE: ${response.code()}")
+                Log.d(TAG, response.raw().toString())
                 Log.d(TAG, response.body().toString())
             } else {
                 Log.d(TAG, "NOT SUCCESSFUL")
+                Log.d(TAG, "CODE: ${response.code()}")
+                Log.d(TAG, response.headers().toString())
                 Log.e(TAG, response.message())
+                Log.e(TAG, response.raw().toString())
             }
         }
     }

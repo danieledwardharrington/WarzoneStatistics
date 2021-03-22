@@ -16,12 +16,10 @@ import retrofit2.http.Path
 
 interface WarzoneService {
 
-    //@Headers("x-rapidapi-key: ${BuildConfig.RAPID_API_KEY}", "x-rapidapi-host: ${BuildConfig.RAPID_API_HOST}")
-    @GET("warzone/{username}/{platform}")
+    @GET("warzone-matches/{username}/{platform}")
     suspend fun getWarzoneMatches(@Path("username") username: String, @Path("platform") platform: String): Response<MatchResponse>
 
-    //@Headers("x-rapidapi-key: ${BuildConfig.RAPID_API_KEY}", "x-rapidapi-host: ${BuildConfig.RAPID_API_HOST}")
-    @GET("warzone-matches/{username}/{platform}")
+    @GET("warzone/{username}/{platform}")
     suspend fun getWarzoneStats(@Path("username") username: String, @Path("platform") platform: String): Response<StatsResponse>
 
     companion object {
@@ -31,7 +29,7 @@ interface WarzoneService {
 
 
             val retrofit = Retrofit.Builder()
-                .addConverterFactory(Json.asConverterFactory(contentType))
+                .addConverterFactory(Json{ignoreUnknownKeys = true}.asConverterFactory(contentType))
                 .baseUrl(BuildConfig.COD_API_BASE_URL)
                 .client(client)
                 .build()

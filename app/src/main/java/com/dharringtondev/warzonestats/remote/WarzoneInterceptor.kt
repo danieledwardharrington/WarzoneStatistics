@@ -8,8 +8,8 @@ class WarzoneInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
         val request = original.newBuilder()
-            .header("x-rapidapi-key", BuildConfig.RAPID_API_KEY)
-            .header("x-rapidapi-host", BuildConfig.RAPID_API_HOST)
+            .addHeader("x-rapidapi-key", BuildConfig.RAPID_API_KEY)
+            .addHeader("x-rapidapi-host", BuildConfig.RAPID_API_HOST)
             .method(original.method(), original.body())
             .build()
 
