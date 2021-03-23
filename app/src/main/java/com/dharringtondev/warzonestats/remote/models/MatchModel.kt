@@ -24,5 +24,8 @@ data class MatchModel(
     var rankedTeams: MutableList<TeamModel>,
 
     @SerialName("teamCount")
-    var teamCount: Int
+    var teamCount: Int,
+
+    @SerialName("playerCount")
+    var playerCount: Int
 )
