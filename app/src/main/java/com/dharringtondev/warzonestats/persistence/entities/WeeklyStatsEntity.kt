@@ -38,6 +38,9 @@ data class WeeklyStatsEntity(@ColumnInfo(name = "killsPerGame")
                              @ColumnInfo(name = "platform")
                              val platform: String,
 
+                             @ColumnInfo(name = "player_name")
+                             val playerName: String,
+
                              @PrimaryKey(autoGenerate = true)
                              var id: Long
 )
