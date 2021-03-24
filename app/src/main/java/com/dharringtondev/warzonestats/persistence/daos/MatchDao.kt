@@ -1,5 +1,6 @@
 package com.dharringtondev.warzonestats.persistence.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.dharringtondev.warzonestats.persistence.entities.MatchEntity
 
@@ -19,9 +20,9 @@ interface MatchDao {
     suspend fun deleteAllMatches()
 
     @Query("SELECT * FROM match_table")
-    suspend fun getAllMatches(): List<MatchEntity>
+    suspend fun getAllMatches(): LiveData<List<MatchEntity>>
 
     @Query("SELECT * FROM match_table WHERE match_id=:matchId")
-    suspend fun getSingleMatch(matchId: String): MatchEntity
+    suspend fun getSingleMatch(matchId: String): MatchEntity?
 
 }
