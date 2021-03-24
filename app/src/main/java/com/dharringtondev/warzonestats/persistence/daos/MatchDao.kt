@@ -20,9 +20,9 @@ interface MatchDao {
     suspend fun deleteAllMatches()
 
     @Query("SELECT * FROM match_table")
-    suspend fun getAllMatches(): LiveData<List<MatchEntity>>
+    suspend fun getAllMatches(): List<MatchEntity>
 
     @Query("SELECT * FROM match_table WHERE match_id=:matchId")
-    suspend fun getSingleMatch(matchId: String): MatchEntity?
+    suspend fun getSingleMatch(matchId: String): MatchEntity
 
 }
