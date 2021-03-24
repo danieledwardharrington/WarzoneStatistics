@@ -8,26 +8,26 @@ import com.dharringtondev.warzonestats.remote.models.TeamModel
 
 @Entity(tableName = "match_table", indices = [Index(value = arrayOf("matchId"), unique = true)])
 data class MatchEntity(@ColumnInfo(name = "match_id")
-                       val matchId: String,
+                       var matchId: String,
 
                        @ColumnInfo(name = "duration")
-                       val duration: Int,
+                       var duration: Int,
 
                        @ColumnInfo(name = "player_stats")
-                       val playerStats: PlayerStatsModel,
+                       var playerStats: PlayerStatsModel,
 
                        @ColumnInfo(name = "game_type")
-                       val gameType: String,
+                       var gameType: String,
 
                        @ColumnInfo(name = "private_match")
-                       val isPrivateMatch: Boolean,
+                       var isPrivateMatch: Boolean,
 
                        @ColumnInfo(name = "ranked_teams")
-                       val rankedTeams: MutableList<TeamModel>,
+                       var rankedTeams: MutableList<TeamModel>,
 
                        @ColumnInfo(name = "team_count")
-                       val teamCount: Int,
+                       var teamCount: Int,
 
                        @ColumnInfo(name = "player_count")
-                       val playerCount: Int
+                       var playerCount: Int
 )

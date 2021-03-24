@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.dharringtondev.warzonestats.persistence.WarzoneDatabase
 import com.dharringtondev.warzonestats.persistence.entities.CareerStatsEntity
 import com.dharringtondev.warzonestats.persistence.entities.MatchEntity
+import com.dharringtondev.warzonestats.persistence.entities.WeeklyStatsEntity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,10 @@ class WarzoneRepository(application: Application) {
     //career live data
     private var allCareerStatsLD = MutableLiveData<List<CareerStatsEntity>>()
     private var singleCareerLD = MutableLiveData<CareerStatsEntity>()
+
+    //weekly live data
+    private var allWeeklyStatsLD = MutableLiveData<List<WeeklyStatsEntity>>()
+    private var singleWeeklyStatsLD = MutableLiveData<WeeklyStatsEntity>()
 
     //MATCH FUNCTIONS
     fun insertMatch(matchEntity: MatchEntity) {
@@ -91,5 +96,36 @@ class WarzoneRepository(application: Application) {
     }
 
     //WEEKLY FUNCTIONS
+    fun insertWeeklyStats(weeklyStatsEntity: WeeklyStatsEntity) {
+        GlobalScope.launch {
+            warzoneDatabase.weeklyDao().insertWeeklyStats(weeklyStatsEntity)
+            getAllWeeklyStats()
+        }
+    }
+
+    fun deleteWeeklyStats(weeklyStatsEntity: WeeklyStatsEntity) {
+        GlobalScope.launch {
+            warzoneDatabase.weeklyDao().deleteWeeklyStats(weeklyStatsEntity)
+            getAllWeeklyStats()
+        }
+    }
+
+    fun deleteAllWeeklyStats() {
+        GlobalScope.launch {
+            warzoneDatabase.weeklyDao().deleteAllWeeklyStats()
+        }
+    }
+
+    fun getAllWeeklyStats() {
+        GlobalScope.launch {
+            allWeeklyStatsLD.postValue(warzoneDatabase.weeklyDao().getAllWeeklyStats())
+        }
+    }
+
+    fun getSingleWeekly(platform: String, playerName: String) {
+        GlobalScope.launch {
+            singleWeeklyStatsLD.postValue(warzoneDatabase.weeklyDao().getSingleWeeklyStats(platform, playerName))
+        }
+    }
 
 }

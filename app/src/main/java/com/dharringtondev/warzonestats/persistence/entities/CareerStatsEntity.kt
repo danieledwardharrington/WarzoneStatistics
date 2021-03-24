@@ -6,53 +6,54 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "career_table")
 data class CareerStatsEntity(@ColumnInfo(name = "cash")
-                             val cash: Long,
+                             var cash: Long,
 
                              @ColumnInfo(name = "contracts")
-                             val contracts: Int,
+                             var contracts: Int,
 
                              @ColumnInfo(name = "deaths")
-                             val deaths: Int,
+                             var deaths: Int,
 
                              @ColumnInfo(name = "downs")
-                             val downs: Int,
+                             var downs: Int,
 
                              @ColumnInfo(name = "games_played")
-                             val gamesPlayed: Int,
+                             var gamesPlayed: Int,
 
                              @ColumnInfo(name = "kd_ratio")
-                             val kdRatio: Double,
+                             var kdRatio: Double,
 
                              @ColumnInfo(name = "kills")
-                             val kills: Int,
+                             var kills: Int,
 
                              @ColumnInfo(name = "revives")
-                             val revives: Int,
+                             var revives: Int,
 
                              @ColumnInfo(name = "score")
-                             val score: Long,
+                             var score: Long,
 
                              @ColumnInfo(name = "score_per_minute")
-                             val scorePerMinute: Double,
+                             var scorePerMinute: Double,
 
                              @ColumnInfo(name = "time_played")
-                             val timePlayed: Long,
+                             var timePlayed: Long,
 
                              @ColumnInfo(name = "top_five")
-                             val topFive: Int,
+                             var topFive: Int,
 
                              @ColumnInfo(name = "top_ten")
-                             val topTen: Int,
+                             var topTen: Int,
 
                              @ColumnInfo(name = "wins")
-                             val wins: Int,
+                             var wins: Int,
 
                              @ColumnInfo(name = "player_name")
-                             val playerName: String,
+                             var playerName: String,
 
                              @ColumnInfo(name = "platform")
-                             val platform: String,
+                             var platform: String
 
-                             @PrimaryKey(autoGenerate = true)
-                             var id: Long
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}

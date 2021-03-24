@@ -6,41 +6,41 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "weekly_table")
 data class WeeklyStatsEntity(@ColumnInfo(name = "killsPerGame")
-                             val killsPerGame: Double,
+                             var killsPerGame: Double,
 
                              @ColumnInfo(name = "headshotPercentage")
-                             val headshotPercentage: Double,
+                             var headshotPercentage: Double,
 
                              @ColumnInfo(name = "deaths")
-                             val deaths: Int,
+                             var deaths: Int,
 
                              @ColumnInfo(name = "avgLifeTime")
-                             val avgLifeTime: Double,
+                             var avgLifeTime: Double,
 
                              @ColumnInfo(name = "kdRatio")
-                             val kdRatio: Double,
+                             var kdRatio: Double,
 
                              @ColumnInfo(name = "kills")
-                             val kills: Int,
+                             var kills: Int,
 
                              @ColumnInfo(name = "score")
-                             val score: Long,
+                             var score: Long,
 
                              @ColumnInfo(name = "scorePerMinute")
-                             val scorePerMinute: Double,
+                             var scorePerMinute: Double,
 
                              @ColumnInfo(name = "timePlayed")
-                             val timePlayed: Long,
+                             var timePlayed: Long,
 
                              @ColumnInfo(name = "gulagDeaths")
-                             val gulagDeaths: Int,
+                             var gulagDeaths: Int,
 
                              @ColumnInfo(name = "platform")
-                             val platform: String,
+                             var platform: String,
 
                              @ColumnInfo(name = "player_name")
-                             val playerName: String,
-
-                             @PrimaryKey(autoGenerate = true)
-                             var id: Long
-)
+                             var playerName: String
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}
